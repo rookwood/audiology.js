@@ -1,0 +1,35 @@
+{
+    "name": "audiology",
+    "version": "0.0.1",
+    "description": "Audiology charts and graphs in React component form",
+    "main": "index.js",
+    "scripts": {
+        "build": "tsc",
+        "format": "prettier --write \"src/**/*.ts\" \"src/**/*.js\"",
+        "lint": "tslint -p tsconfig.json",
+        "test": "jest --config jestconfig.json"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/rookwood/audiology.js.git"
+    },
+    "keywords": [
+        "audiology",
+        "audiogram"
+    ],
+    "author": "Matt Hollis",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/rookwood/audiology.js/issues"
+    },
+    "homepage": "https://github.com/rookwood/audiology.js#readme",
+    "devDependencies": {
+        "@types/jest": "^23.3.9",
+        "jest": "^23.6.0",
+        "prettier": "^1.14.3",
+        "ts-jest": "^23.10.4",
+        "tslint": "^5.11.0",
+        "tslint-config-prettier": "^1.15.0",
+        "typescript": "^3.1.5"
+    }
+}
