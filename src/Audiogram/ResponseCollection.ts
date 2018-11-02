@@ -14,6 +14,12 @@ class ResponseCollection {
     public next(index: number): Response {
         return this.responses[index + 1];
     }
+
+    public needsLineToNextMarker(index: number): boolean {
+        const nextResponse = this.next(index);
+
+        return nextResponse !== undefined && nextResponse.modality !== 'bone' && nextResponse.noResponse === false;
+    }
 }
 
 export { ResponseCollection };
