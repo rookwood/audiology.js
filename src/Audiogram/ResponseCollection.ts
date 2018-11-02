@@ -1,4 +1,4 @@
-import { IResponseShape, Response } from './Response';
+import { Ear, IResponseShape, Response, Modality } from './Response';
 
 class ResponseCollection {
     public static from(responses: Array<IResponseShape>): ResponseCollection {
@@ -19,6 +19,22 @@ class ResponseCollection {
         const nextResponse = this.next(index);
 
         return nextResponse !== undefined && nextResponse.modality !== 'bone' && nextResponse.noResponse === false;
+    }
+
+    public filterByEar(ear: Ear): ResponseCollection {
+        return new ResponseCollection(this.responses.filter(response => response.ear === ear));
+    }
+
+    public filterByModality(modality: Modality): ResponseCollection {
+        return new ResponseCollection(this.responses.filter(response => response.modality === modality));
+    }
+
+    public get length(): number {
+        return this.responses.length;
+    }
+
+    public forEach(fn: (response: Response) => void) {
+        this.responses.forEach(fn);
     }
 }
 
