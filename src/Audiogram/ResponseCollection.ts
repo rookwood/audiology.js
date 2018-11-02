@@ -10,6 +10,10 @@ class ResponseCollection {
     constructor(responses: Array<Response>) {
         this.responses = responses;
     }
+
+    public next(index: number): Response {
+        return this.responses[index + 1];
+    }
 }
 
 export { ResponseCollection };
