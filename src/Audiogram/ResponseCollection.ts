@@ -1,4 +1,4 @@
-import { Ear, IResponseShape, Response, Modality } from './Response';
+import { Ear, IResponseShape, Modality, Response } from './Response';
 
 class ResponseCollection {
     public static from(responses: Array<IResponseShape>): ResponseCollection {
