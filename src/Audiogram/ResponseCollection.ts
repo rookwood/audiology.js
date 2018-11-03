@@ -47,17 +47,34 @@ class ResponseCollection {
         }, []);
 
         if (ear.length !== 1) {
-            throw Error(
-                'Collection contains more than one ear listing and should be partitioned first.  See ResponseCollection.partition()',
-            );
+            throw Error(UNPARTITIONED_ERROR);
         }
 
         return ear[0];
+    }
+
+    public get modality(): Modality {
+        const modality: Modality[] = this.responses.reduce((modalities: Modality[], response: Response): Modality[] => {
+            if (modalities.indexOf(response.modality) === -1) {
+                modalities.push(response.modality);
+            }
+
+            return modalities;
+        }, []);
+
+        if (modality.length !== 1) {
+            throw Error(UNPARTITIONED_ERROR);
+        }
+
+        return modality[0];
     }
 
     public toArray(): Array<Response> {
         return this.responses;
     }
 }
+
+const UNPARTITIONED_ERROR =
+    'Collection must be partitioned before determining ear or modality.  See ResponseCollection.partition()';
 
 export { ResponseCollection };

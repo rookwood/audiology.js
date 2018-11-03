@@ -159,7 +159,7 @@ describe('ResponseCollection', () => {
         expect(collection.ear).toBe('right');
     });
 
-    test('Get the ear represented by a collection', () => {
+    test('Get the modality represented by a collection', () => {
         const rawResponses: Array<IResponseShape> = [
             {
                 amplitude: 20,
@@ -180,6 +180,32 @@ describe('ResponseCollection', () => {
 
         const collection = ResponseCollection.from(rawResponses);
 
+        expect(collection.modality).toBe('air');
+    });
+
+    test('Throw an error when attempting to get an ear or modality from an unpartitioned collection', () => {
+        const rawResponses: Array<IResponseShape> = [
+            {
+                amplitude: 20,
+                ear: Ear.right,
+                frequency: 500,
+                modality: Modality.Bone,
+            },
+            {
+                amplitude: 20,
+                ear: Ear.left,
+                frequency: 1000,
+            },
+            {
+                amplitude: 20,
+                ear: Ear.right,
+                frequency: 2000,
+            },
+        ];
+
+        const collection = ResponseCollection.from(rawResponses);
+
         expect(() => collection.ear).toThrowError();
+        expect(() => collection.modality).toThrowError();
     });
 });
