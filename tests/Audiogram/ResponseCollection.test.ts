@@ -6,17 +6,17 @@ describe('ResponseCollection', () => {
         const rawResponses: Array<IResponseShape> = [
             {
                 amplitude: 20,
-                ear: Ear.Right,
+                ear: Ear.right,
                 frequency: 500,
             },
             {
                 amplitude: 20,
-                ear: Ear.Right,
+                ear: Ear.right,
                 frequency: 1000,
             },
             {
                 amplitude: 20,
-                ear: Ear.Right,
+                ear: Ear.right,
                 frequency: 2000,
             },
         ];
@@ -30,17 +30,17 @@ describe('ResponseCollection', () => {
         const rawResponses: Array<IResponseShape> = [
             {
                 amplitude: 20,
-                ear: Ear.Right,
+                ear: Ear.right,
                 frequency: 500,
             },
             {
                 amplitude: 20,
-                ear: Ear.Right,
+                ear: Ear.right,
                 frequency: 1000,
             },
             {
                 amplitude: 20,
-                ear: Ear.Right,
+                ear: Ear.right,
                 frequency: 2000,
             },
         ];
@@ -54,17 +54,17 @@ describe('ResponseCollection', () => {
         const rawResponses: Array<IResponseShape> = [
             {
                 amplitude: 20,
-                ear: Ear.Right,
+                ear: Ear.right,
                 frequency: 500,
             },
             {
                 amplitude: 20,
-                ear: Ear.Right,
+                ear: Ear.right,
                 frequency: 1000,
             },
             {
                 amplitude: 110,
-                ear: Ear.Right,
+                ear: Ear.right,
                 frequency: 2000,
                 no_response: true,
             },
@@ -80,24 +80,24 @@ describe('ResponseCollection', () => {
         const rawResponses: Array<IResponseShape> = [
             {
                 amplitude: 20,
-                ear: Ear.Right,
+                ear: Ear.right,
                 frequency: 500,
             },
             {
                 amplitude: 20,
-                ear: Ear.Right,
+                ear: Ear.right,
                 frequency: 1000,
             },
             {
                 amplitude: 110,
-                ear: Ear.Left,
+                ear: Ear.left,
                 frequency: 2000,
                 no_response: true,
             },
         ];
 
         const collection = ResponseCollection.from(rawResponses);
-        const filteredCollection = collection.filterByEar(Ear.Right);
+        const filteredCollection = collection.filterByEar(Ear.right);
 
         expect(filteredCollection.length).toBe(2);
         filteredCollection.forEach((response: Response) => {
@@ -109,18 +109,18 @@ describe('ResponseCollection', () => {
         const rawResponses: Array<IResponseShape> = [
             {
                 amplitude: 20,
-                ear: Ear.Right,
+                ear: Ear.right,
                 frequency: 500,
                 modality: Modality.Bone,
             },
             {
                 amplitude: 20,
-                ear: Ear.Right,
+                ear: Ear.right,
                 frequency: 1000,
             },
             {
                 amplitude: 110,
-                ear: Ear.Left,
+                ear: Ear.left,
                 frequency: 2000,
                 no_response: true,
             },
@@ -133,5 +133,53 @@ describe('ResponseCollection', () => {
         filteredCollection.forEach((response: Response) => {
             expect(response.modality).toBe('air');
         });
+    });
+
+    test('Get the ear represented by a collection', () => {
+        const rawResponses: Array<IResponseShape> = [
+            {
+                amplitude: 20,
+                ear: Ear.right,
+                frequency: 500,
+            },
+            {
+                amplitude: 20,
+                ear: Ear.right,
+                frequency: 1000,
+            },
+            {
+                amplitude: 20,
+                ear: Ear.right,
+                frequency: 2000,
+            },
+        ];
+
+        const collection = ResponseCollection.from(rawResponses);
+
+        expect(collection.ear).toBe('right');
+    });
+
+    test('Get the ear represented by a collection', () => {
+        const rawResponses: Array<IResponseShape> = [
+            {
+                amplitude: 20,
+                ear: Ear.right,
+                frequency: 500,
+            },
+            {
+                amplitude: 20,
+                ear: Ear.left,
+                frequency: 1000,
+            },
+            {
+                amplitude: 20,
+                ear: Ear.right,
+                frequency: 2000,
+            },
+        ];
+
+        const collection = ResponseCollection.from(rawResponses);
+
+        expect(() => collection.ear).toThrowError();
     });
 });

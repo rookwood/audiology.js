@@ -29,12 +29,34 @@ class ResponseCollection {
         return new ResponseCollection(this.responses.filter(response => response.modality === modality));
     }
 
+    public forEach(fn: (response: Response) => void) {
+        this.responses.forEach(fn);
+    }
+
     public get length(): number {
         return this.responses.length;
     }
 
-    public forEach(fn: (response: Response) => void) {
-        this.responses.forEach(fn);
+    public get ear(): Ear {
+        const ear: Ear[] = this.responses.reduce((ears: Ear[], response: Response): Ear[] => {
+            if (ears.indexOf(response.ear) === -1) {
+                ears.push(response.ear);
+            }
+
+            return ears;
+        }, []);
+
+        if (ear.length !== 1) {
+            throw Error(
+                'Collection contains more than one ear listing and should be partitioned first.  See ResponseCollection.partition()',
+            );
+        }
+
+        return ear[0];
+    }
+
+    public toArray(): Array<Response> {
+        return this.responses;
     }
 }
 

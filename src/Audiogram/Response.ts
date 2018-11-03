@@ -46,11 +46,11 @@ class Response {
 }
 
 export enum Ear {
-    Right = 'right',
-    Left = 'left',
-    Both = 'both',
-    HearingAid = 'hearing aid',
-    CochlearImplant = 'cochlear implant',
+    right = 'right',
+    left = 'left',
+    both = 'both',
+    hearingaid = 'hearing aid',
+    cochlearimplant = 'cochlear implant',
 }
 
 export enum Modality {

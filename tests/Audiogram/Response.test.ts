@@ -3,7 +3,7 @@ describe('Response', () => {
     test('Build by passing in all required properties', () => {
         const response = new Response({
             amplitude: 20,
-            ear: Ear.Right,
+            ear: Ear.right,
             frequency: 500,
         });
 
@@ -15,7 +15,7 @@ describe('Response', () => {
     test('Optional properties have sensible defaults', () => {
         const response = new Response({
             amplitude: 20,
-            ear: Ear.Right,
+            ear: Ear.right,
             frequency: 500,
         });
 
@@ -29,14 +29,14 @@ describe('Response', () => {
     test('Is this a bone conduction response?', () => {
         const boneResponse = new Response({
             amplitude: 20,
-            ear: Ear.Right,
+            ear: Ear.right,
             frequency: 500,
             modality: Modality.Bone,
         });
 
         const notBoneResponse = new Response({
             amplitude: 20,
-            ear: Ear.Right,
+            ear: Ear.right,
             frequency: 500,
             modality: Modality.Air,
         });
@@ -48,13 +48,13 @@ describe('Response', () => {
     test('Type string is composed from ear, modality, and masking', () => {
         const responseA = new Response({
             amplitude: 20,
-            ear: Ear.Left,
+            ear: Ear.left,
             frequency: 500,
         });
 
         const responseB = new Response({
             amplitude: 20,
-            ear: Ear.Right,
+            ear: Ear.right,
             frequency: 500,
             masking: 50,
         });
@@ -66,7 +66,7 @@ describe('Response', () => {
     test('Key is composed from type and frequency', () => {
         const response = new Response({
             amplitude: 20,
-            ear: Ear.Right,
+            ear: Ear.right,
             frequency: 500,
         });
 
