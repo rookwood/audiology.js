@@ -275,4 +275,55 @@ describe('ResponseCollection', () => {
             expect(response.modality).toBe(Modality.CochlearImplant);
         });
     });
+
+    test('Partition responses by ear and modality', () => {
+        const ears: Ear[] = [Ear.right, Ear.left, Ear.both];
+        const modalities: Modality[] = [
+            Modality.Air,
+            Modality.Bone,
+            Modality.HearingAid,
+            Modality.CochlearImplant,
+            Modality.Soundfield,
+        ];
+
+        const rawResponses: IResponseShape[] = ears.reduce((responses: IResponseShape[], ear: Ear) => {
+            return [
+                ...responses,
+                ...modalities.map(modality => ({
+                    amplitude: 20,
+                    ear,
+                    frequency: 1000,
+                    modality,
+                })),
+            ];
+        }, []);
+
+        const collection = ResponseCollection.from(rawResponses);
+
+        expect(collection.partition().length).toBe(7);
+    });
+
+    test('Filter empty collections after partitioning', () => {
+        const rawResponses: Array<IResponseShape> = [
+            {
+                amplitude: 20,
+                ear: Ear.right,
+                frequency: 500,
+            },
+            {
+                amplitude: 20,
+                ear: Ear.left,
+                frequency: 1000,
+            },
+            {
+                amplitude: 20,
+                ear: Ear.right,
+                frequency: 2000,
+            },
+        ];
+
+        const collection = ResponseCollection.from(rawResponses);
+
+        expect(collection.partition().length).toBe(2);
+    });
 });

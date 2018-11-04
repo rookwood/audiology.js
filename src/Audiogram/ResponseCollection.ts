@@ -11,6 +11,18 @@ class ResponseCollection {
         this.responses = responses;
     }
 
+    public partition(): ResponseCollection[] {
+        return [
+            this.right().air(),
+            this.left().air(),
+            this.right().bone(),
+            this.left().bone(),
+            this.soundfield(),
+            this.aided(),
+            this.implant(),
+        ].filter(set => set.length);
+    }
+
     public next(index: number): Response {
         return this.responses[index + 1];
     }
