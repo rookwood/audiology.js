@@ -72,6 +72,10 @@ class ResponseCollection {
     public toArray(): Array<Response> {
         return this.responses;
     }
+
+    public right(): ResponseCollection {
+        return this.filterByEar(Ear.right);
+    }
 }
 
 const UNPARTITIONED_ERROR =

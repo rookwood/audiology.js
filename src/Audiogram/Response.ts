@@ -49,14 +49,14 @@ export enum Ear {
     right = 'right',
     left = 'left',
     both = 'both',
-    hearingaid = 'hearing aid',
-    cochlearimplant = 'cochlear implant',
 }
 
 export enum Modality {
     Air = 'air',
     Bone = 'bone',
     Soundfield = 'soundfield',
+    HearingAid = 'hearing aid',
+    CochlearImplant = 'cochlear implant',
 }
 
 export enum Stimulus {
@@ -78,8 +78,8 @@ export enum Test {
 
 export interface IResponseShape {
     amplitude: number;
-    frequency: number;
     ear: Ear;
+    frequency: number;
     masking?: null | number;
     modality?: Modality;
     no_response?: boolean;

@@ -208,4 +208,32 @@ describe('ResponseCollection', () => {
         expect(() => collection.ear).toThrowError();
         expect(() => collection.modality).toThrowError();
     });
+
+    test('Get new collection of responses filtered by ear or modality', () => {
+        const ears: Ear[] = [Ear.right, Ear.left, Ear.both];
+        const modalities: Modality[] = [
+            Modality.Air,
+            Modality.Bone,
+            Modality.HearingAid,
+            Modality.CochlearImplant,
+            Modality.Soundfield,
+        ];
+
+        const rawResponses: IResponseShape[] = ears.reduce((responses: IResponseShape[], ear: Ear) => {
+            return [
+                ...responses,
+                ...modalities.map(modality => ({
+                    amplitude: 20,
+                    ear,
+                    frequency: 1000,
+                    modality,
+                })),
+            ];
+        }, []);
+
+        const collection = ResponseCollection.from(rawResponses);
+
+        expect(collection.length).toBe(15);
+        expect(collection.right().length).toBe(5);
+    });
 });
