@@ -1,13 +1,13 @@
 import { Ear, IResponseShape, Modality, Response } from './Response';
 
 class ResponseCollection {
-    public static from(responses: Array<IResponseShape>): ResponseCollection {
+    public static from(responses: IResponseShape[]): ResponseCollection {
         return new ResponseCollection(responses.map(response => new Response(response)));
     }
 
-    public responses: Array<Response>;
+    public responses: Response[];
 
-    constructor(responses: Array<Response>) {
+    constructor(responses: Response[]) {
         this.responses = responses;
     }
 
@@ -69,12 +69,40 @@ class ResponseCollection {
         return modality[0];
     }
 
-    public toArray(): Array<Response> {
+    public toArray(): Response[] {
         return this.responses;
     }
 
     public right(): ResponseCollection {
         return this.filterByEar(Ear.right);
+    }
+
+    public left(): ResponseCollection {
+        return this.filterByEar(Ear.left);
+    }
+
+    public both(): ResponseCollection {
+        return this.filterByEar(Ear.both);
+    }
+
+    public air(): ResponseCollection {
+        return this.filterByModality(Modality.Air);
+    }
+
+    public bone(): ResponseCollection {
+        return this.filterByModality(Modality.Bone);
+    }
+
+    public soundfield(): ResponseCollection {
+        return this.filterByModality(Modality.Soundfield);
+    }
+
+    public aided(): ResponseCollection {
+        return this.filterByModality(Modality.HearingAid);
+    }
+
+    public implant(): ResponseCollection {
+        return this.filterByModality(Modality.CochlearImplant);
     }
 }
 

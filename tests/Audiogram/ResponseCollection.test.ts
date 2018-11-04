@@ -234,6 +234,45 @@ describe('ResponseCollection', () => {
         const collection = ResponseCollection.from(rawResponses);
 
         expect(collection.length).toBe(15);
+
         expect(collection.right().length).toBe(5);
+        collection.right().forEach(response => {
+            expect(response.ear).toBe(Ear.right);
+        });
+
+        expect(collection.left().length).toBe(5);
+        collection.left().forEach(response => {
+            expect(response.ear).toBe(Ear.left);
+        });
+
+        expect(collection.both().length).toBe(5);
+        collection.both().forEach(response => {
+            expect(response.ear).toBe(Ear.both);
+        });
+
+        expect(collection.air().length).toBe(3);
+        collection.air().forEach(response => {
+            expect(response.modality).toBe(Modality.Air);
+        });
+
+        expect(collection.bone().length).toBe(3);
+        collection.bone().forEach(response => {
+            expect(response.modality).toBe(Modality.Bone);
+        });
+
+        expect(collection.soundfield().length).toBe(3);
+        collection.soundfield().forEach(response => {
+            expect(response.modality).toBe(Modality.Soundfield);
+        });
+
+        expect(collection.aided().length).toBe(3);
+        collection.aided().forEach(response => {
+            expect(response.modality).toBe(Modality.HearingAid);
+        });
+
+        expect(collection.implant().length).toBe(3);
+        collection.implant().forEach(response => {
+            expect(response.modality).toBe(Modality.CochlearImplant);
+        });
     });
 });
