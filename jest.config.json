@@ -1,0 +1,8 @@
+{
+    "transform": {
+        "^.+\\.(t|j)sx?$": "<rootDir>/test-preprocessor.js"
+    },
+    "testRegex": "(/tests/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$",
+    "moduleFileExtensions": ["ts", "tsx", "js", "jsx", "json", "node"],
+    "setupFiles": ["<rootDir>/test-shim.js", "<rootDir>/test-setup.js"]
+}

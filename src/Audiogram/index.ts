@@ -1,1 +1,1 @@
-export const Audiogram = () => 'audiogram goes here';
+export { Audiogram } from './components/Audiogram';
