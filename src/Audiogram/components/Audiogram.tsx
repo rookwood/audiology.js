@@ -6,4 +6,4 @@ class Audiogram extends React.Component {
     }
 }
 
-export { Audiogram };
+export default Audiogram;

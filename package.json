@@ -40,9 +40,19 @@
         "typescript": "^3.1.5"
     },
     "dependencies": {
+        "@vx/axis": "^0.0.179",
+        "@vx/glyph": "^0.0.179",
+        "@vx/gradient": "^0.0.165",
+        "@vx/grid": "^0.0.179",
+        "@vx/group": "^0.0.170",
+        "@vx/scale": "^0.0.179",
+        "@vx/shape": "^0.0.179",
         "awesome-typescript-loader": "^5.2.1",
+        "classnames": "^2.2.6",
+        "d3-shape": "^1.2.2",
         "react": "^16.6.0",
         "react-dom": "^16.6.0",
+        "react-sizeme": "^2.5.2",
         "source-map-loader": "^0.2.4",
         "webpack": "^4.24.0"
     }
