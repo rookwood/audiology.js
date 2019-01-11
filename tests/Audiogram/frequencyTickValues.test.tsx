@@ -10,4 +10,8 @@ describe('Determine which labels are displayed based upon rendered size', () => 
         expect(frequencyTickValues(199).length).toBe(3);
         expect(frequencyTickValues(15).length).toBe(3);
     });
+
+    test('Allow for returning intra-octaive values when needed to display grid lines', () => {
+        expect(frequencyTickValues(600, 'ALL_GRID_LINE_VALUES').length).toBe(10);
+    });
 });
